@@ -14,7 +14,7 @@ export default function useApplicationdData () {
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_UPDATE = "SET_UPDATE";
-
+  const SET_SPOTS= "SET_SPOTS"
 
   const reducers = {
     SET_DAY : (state, value) =>{
@@ -26,8 +26,11 @@ export default function useApplicationdData () {
     },
     
     SET_UPDATE: (state, value) => {
+
       return {...state, appointments:value}
-      
+    },
+    SET_SPOTS: (state, value) => {
+      return {...state, days:value}
     }
 
   }
@@ -35,29 +38,31 @@ export default function useApplicationdData () {
   function reducer(state, action) {
     return reducers[action.type](state, action.value)||state;
   }
-
   
   const [state, dispatchState] = useReducer(reducer, initialState)
   
   const setDay = day => dispatchState({type:SET_DAY, value:day});
-  // const setDays = days => dispatchState({type:SET_DAY, value:days});
-  // const setAppointments = appointments => dispatchState({type:SET_DAY, value:appointments});
-  // const setInterviewers = interviewers => dispatchState({type:SET_DAY, value:interviewers});
   
   const bookInterview= function (id,interview) {
-
-
     const appointment = {
-    ...state.appointments[id],
-    interview: { ...interview }
+      ...state.appointments[id],
+      interview: { ...interview }
     };
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };  
-    return Promise.resolve(axios.put(`http://localhost:8001/api/appointments/${id}`,appointments[id]))
-    .then(() => {dispatchState({type:SET_UPDATE, value: appointments})
+    const spotsLeft = (day) => {
+      return day.appointments.length - day.appointments.reduce((numOfBooked, id) => (appointments[id].interview? numOfBooked + 1: numOfBooked), 0)
+    }
+    const days = state.days.map(day=> {
+        return {...day, spots: spotsLeft(day)}
+ 
+          
     })
+    return Promise.resolve(axios.put(`http://localhost:8001/api/appointments/${id}`,appointments[id]))
+    .then(()=> {dispatchState({type:SET_SPOTS,value:days})})    
+    .then(() => {dispatchState({type:SET_UPDATE, value: appointments})})
   };
   
   const cancelInterview= function (id, interview) {
@@ -69,7 +74,15 @@ export default function useApplicationdData () {
       ...state.appointments,
       [id]: appointment
     };  
+
+    const spotsLeft = (day) => {
+      return day.appointments.length - day.appointments.reduce((numOfBooked, id) => (appointments[id].interview? numOfBooked + 1: numOfBooked), 0)
+    }
+    const days = state.days.map(day=> {
+        return {...day, spots: spotsLeft(day)}
+    })
     return Promise.resolve(axios.delete(`http://localhost:8001/api/appointments/${id}`,appointments[id].interview))
+    .then(()=> {dispatchState({type:SET_SPOTS,value:days})})   
     .then(() => {dispatchState({type:SET_UPDATE, value: appointments})
     })
   };  
