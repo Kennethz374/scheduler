@@ -8,12 +8,14 @@ export default function useApplicationdData () {
     days: [],
     appointments: {},
     interviewers: {},
-    interview:{}
+    interview:{},
+    spots:4
   }
   const SET_DAY = "SET_DAY";
   const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
   const SET_UPDATE = "SET_UPDATE";
-  
+
+
   const reducers = {
     SET_DAY : (state, value) =>{
       return {...state, day: value}
@@ -27,7 +29,7 @@ export default function useApplicationdData () {
       return {...state, appointments:value}
       
     }
-    
+
   }
   
   function reducer(state, action) {
@@ -43,6 +45,8 @@ export default function useApplicationdData () {
   // const setInterviewers = interviewers => dispatchState({type:SET_DAY, value:interviewers});
   
   const bookInterview= function (id,interview) {
+
+
     const appointment = {
     ...state.appointments[id],
     interview: { ...interview }
