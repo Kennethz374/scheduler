@@ -1,4 +1,3 @@
-// import Appointment from "components/Appointment"; \
 import React from 'react'
 import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header.js"
@@ -104,9 +103,3 @@ export default function Appointment(props) {
     />)}
      
           </article>}
-
-{/* <Form
-interviewers = {interviewers}
-onSave={action("onSave")}
-onCancel={action("onCancel")}
-/> */}

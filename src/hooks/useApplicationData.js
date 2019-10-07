@@ -34,12 +34,12 @@ export default function useApplicationdData () {
     }
 
   }
-  
+
   function reducer(state, action) {
     return reducers[action.type](state, action.value)||state;
   }
-  
   const [state, dispatchState] = useReducer(reducer, initialState)
+
   
   const setDay = day => dispatchState({type:SET_DAY, value:day});
   
