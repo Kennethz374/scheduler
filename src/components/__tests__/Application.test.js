@@ -134,7 +134,7 @@ describe("Form", () => {
   it("shows the delete error when failing to save an appointment", async () => {
     axios.delete.mockRejectedValueOnce();
 
-    const { container,debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
     
@@ -147,7 +147,6 @@ describe("Form", () => {
     fireEvent.click(getByText(appointment, "Confirm"));
 
     await waitForElement(()=>getByText(appointment,"Error 500, Internal server Error"))
-    debug();
   });
 
 
