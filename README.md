@@ -23,10 +23,12 @@ npm run storybook
 ```
 ## Demo of CRUD 
 
+## General UI
 !["Scheduler_UI"](https://github.com/Kennethz374/scheduler/blob/master/docs/Scheduler_UI.png)
 
+## CREATE
 !["Create"](https://github.com/Kennethz374/scheduler/blob/master/docs/Create_Func.gif)
-
+## EDIT
 !["Edit"](https://github.com/Kennethz374/scheduler/blob/master/docs/Edit_Func.gif)
-
+##DELETE
 !["Delete"](https://github.com/Kennethz374/scheduler/blob/master/docs/Delete_Func.gif)
