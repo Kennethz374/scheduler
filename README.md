@@ -32,6 +32,6 @@ npm run storybook
 ## EDIT
 !["Edit"](https://github.com/Kennethz374/scheduler/blob/master/docs/EditN.gif)
 
-##DELETE
+## DELETE
 
 !["Delete"](https://github.com/Kennethz374/scheduler/blob/master/docs/Delete_Func.gif)
