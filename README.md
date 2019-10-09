@@ -29,7 +29,7 @@ npm run storybook
 ## CREATE
 !["Create"](https://github.com/Kennethz374/scheduler/blob/master/docs/Create_Func.gif)
 ## EDIT
-!["Edit"](https://github.com/Kennethz374/scheduler/blob/master/docs/Edit_Func.gif)
+!["Edit"](https://github.com/Kennethz374/scheduler/blob/master/docs/EditN.gif)
 
 ##DELETE
 !["Delete"](https://github.com/Kennethz374/scheduler/blob/master/docs/Delete_Func.gif)
