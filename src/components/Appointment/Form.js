@@ -43,9 +43,7 @@ export default function Form(props) {
           setName(event.target.value)
         }}
         data-testid="student-name-input"
-        /*
-          This must be a controlled component
-        */
+
       />
     </form>
     <section className="appointment__validation">{error}</section>
@@ -60,6 +58,3 @@ export default function Form(props) {
 </main>
 }
 
-// function find(arr, callback)
-
-// find([], callback)

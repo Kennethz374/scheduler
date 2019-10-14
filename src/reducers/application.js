@@ -30,7 +30,5 @@ export function reducer(state, action) {
   } else {
     throw new Error (`Tried to reduce with unsupported action type:${action.type}`)
     
-    // return state
   }
-  // return reducers[action.type](state, action.value)||state;
 }
